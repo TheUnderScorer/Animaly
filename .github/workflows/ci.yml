@@ -1,0 +1,69 @@
+name: CI
+on: [push]
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install npm dependencies
+        run: |
+          npm install
+      - name: Lint
+        run: |
+          npm run lint
+      - name: Run tests
+        run: |
+          npm test
+
+  release:
+    needs:
+      - test
+    name: Build & Release
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - uses: actions/checkout@v2
+      - name: Configure CI Git User
+        run: |
+          git config --global user.name 'TheUnderScorer'
+          git config --global user.email 'przemyslawzydek@gmail.com'
+          git remote set-url origin https://TheUnderScorer:$GITHUB_TOKEN@github.com/TheUnderScorer/Animaly
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install npm dependencies
+        run: |
+          npm install
+      - name: Build Android
+        run: |
+          npm run build:android
+      - name: Upload Artifact
+        id: upload_artifact_android
+        uses: actions/upload-artifact@v1
+        with:
+          name: Animaly.apk
+          path: android/app/build/outputs/apk/release/app-release.apk
+      - name: Conventional Changelog
+        run: |
+          npm run release && git push --follow-tags origin master
+      # Read whole package.json
+      - name: Read package.json
+        id: package
+        uses: juliangruber/read-file-action@v1
+        with:
+          path: ./package.json
+      # Read version from previous step
+      - name: Read version
+        id: release_data
+        uses: gr2m/get-json-paths-action@v1.x
+        with:
+          json: ${{ steps.package.outputs.content }}
+          version: "version"
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v1-release
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: android/app/build/outputs/apk/release/app-release.apk
+          asset_name: Animaly.apk
+          tag: v${{ steps.release_data.outputs.version }}
+          overwrite: true
