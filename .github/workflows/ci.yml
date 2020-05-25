@@ -48,24 +48,3 @@ jobs:
           npm run semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      # Read whole package.json
-      - name: Read package.json
-        id: package
-        uses: juliangruber/read-file-action@v1
-        with:
-          path: ./package.json
-      # Read version from previous step
-      - name: Read version
-        id: release_data
-        uses: gr2m/get-json-paths-action@v1.x
-        with:
-          json: ${{ steps.package.outputs.content }}
-          version: "version"
-      - name: Upload binaries to release
-        uses: svenstaro/upload-release-action@v1-release
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: android/app/build/outputs/apk/release/app-release.apk
-          asset_name: Animaly.apk
-          tag: v${{ steps.release_data.outputs.version }}
-          overwrite: true
