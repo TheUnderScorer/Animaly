@@ -43,9 +43,11 @@ jobs:
         with:
           name: Animaly.apk
           path: android/app/build/outputs/apk/release/app-release.apk
-      - name: Conventional Changelog
+      - name: Semantic Release
         run: |
-          npm run release && git push --follow-tags origin master
+          npm run semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # Read whole package.json
       - name: Read package.json
         id: package

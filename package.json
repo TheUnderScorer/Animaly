@@ -1,6 +1,6 @@
 {
   "name": "Animaly",
-  "version": "0.0.2",
+  "version": "0.0.0-development",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
@@ -9,7 +9,7 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "release": "standard-version"
+    "semantic-release": "semantic-release"
   },
   "dependencies": {
     "@react-navigation/native": "^5.4.3",
@@ -36,8 +36,8 @@
     "prettier": "^2.0.4",
     "react-native-testing-library": "^1.14.0",
     "react-test-renderer": "16.11.0",
-    "standard-version": "^7.1.0",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "semantic-release": "^17.0.8"
   },
   "jest": {
     "preset": "react-native",
@@ -62,5 +62,9 @@
     "setupFilesAfterEnv": [
       "@testing-library/jest-native/extend-expect"
     ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TheUnderScorer/Animaly.git"
   }
 }
