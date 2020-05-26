@@ -5,6 +5,8 @@ import { Button, Icon, Text } from '@ui-kitten/components';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './screens/HomeScreen';
 import { normalIcon } from './styles/icons';
+import { stackHeaderProps } from './static/headerProps';
+import SplashScreen from './screens/SplashScreen';
 
 const Stack = createStackNavigator();
 
@@ -15,26 +17,9 @@ const RootStack: FC<RootStackProps> = () => {
     <>
       <Stack.Navigator
         screenOptions={{
-          headerTitle: (props) => <Text category="h6">{props.children}</Text>,
-          headerStyle: {
-            height: 100,
-          },
-          headerLeft: (props) =>
-            props.canGoBack ? (
-              <Button
-                onPress={props.onPress}
-                appearance="ghost"
-                accessoryLeft={() => (
-                  <Icon
-                    fill="#000"
-                    style={normalIcon}
-                    name="arrow-back-outline"
-                  />
-                )}
-              />
-            ) : undefined,
+          ...stackHeaderProps,
         }}
-        initialRouteName={RootScreens.Home}>
+        initialRouteName={RootScreens.Splash}>
         <Stack.Screen
           options={{
             headerShown: false,
@@ -46,13 +31,9 @@ const RootStack: FC<RootStackProps> = () => {
           options={{
             headerShown: false,
           }}
-          name={RootScreens.Splash}>
-          {() => (
-            <CenteredLayout level="1">
-              <Text category="h1">Splash</Text>
-            </CenteredLayout>
-          )}
-        </Stack.Screen>
+          component={SplashScreen}
+          name={RootScreens.Splash}
+        />
       </Stack.Navigator>
     </>
   );

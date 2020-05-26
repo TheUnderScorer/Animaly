@@ -1,5 +1,5 @@
 import { applyMiddleware, combineReducers, createStore } from 'redux';
-import { userReducer, UserState } from './reducers/user/reducer';
+import { UserActions, userReducer, UserState } from './reducers/user/reducer';
 import thunk from 'redux-thunk';
 import { initialState as userInitialState } from './reducers/user/reducer';
 
@@ -10,6 +10,8 @@ export interface AppStore {
 const initialState: AppStore = {
   user: userInitialState,
 };
+
+export type AppActions = UserActions;
 
 const reducers = combineReducers({
   user: userReducer,
