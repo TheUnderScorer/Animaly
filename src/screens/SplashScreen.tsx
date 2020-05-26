@@ -19,6 +19,8 @@ import { useAsyncStorageContext } from '../providers/AsyncStorageProvider';
 import { fetchCurrentUser } from '../store/reducers/user/actions';
 import AppLogo from '../ui/molecules/AppLogo';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
+import { useNavigation } from '@react-navigation/native';
+import { RootScreens } from '../screens';
 
 export interface SplashScreenProps {}
 
@@ -34,6 +36,8 @@ const styles = StyleSheet.create({
 });
 
 const SplashScreen: FC<SplashScreenProps> = () => {
+  const navigation = useNavigation();
+
   const [isCreatingUser, setIsCreatingUser] = useState(false);
 
   const { storage } = useAsyncStorageContext();
@@ -58,7 +62,7 @@ const SplashScreen: FC<SplashScreenProps> = () => {
       transitionRef.current!.animateNextTransition();
 
       await dispatch(fetchCurrentUser(storage));
-    }, 3000);
+    }, 1000);
 
     return () => {
       clearTimeout(timeout);
@@ -79,9 +83,11 @@ const SplashScreen: FC<SplashScreenProps> = () => {
 
         setIsCreatingUser(true);
         setLoading(false);
+      } else {
+        navigation.navigate(RootScreens.Home);
       }
     }
-  }, [didInitialUserFetch, currentUser, transitionRef]);
+  }, [didInitialUserFetch, currentUser, transitionRef, navigation]);
 
   return (
     <CenteredSafeArea>
@@ -98,9 +104,10 @@ const SplashScreen: FC<SplashScreenProps> = () => {
 
         {(isCreatingUser || loading) && (
           <RowView style={[styles.row, styles.loaderRow]}>
-            {loading && <Spinner size="giant" />}
+            {loading && <Spinner testID="splashSpinner" size="giant" />}
             {isCreatingUser && (
               <Button
+                testID="getStarted"
                 accessoryLeft={() => (
                   <MaterialIcon name="pets" color="#fff" size={20} />
                 )}>
