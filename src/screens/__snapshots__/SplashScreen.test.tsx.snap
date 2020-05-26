@@ -1,0 +1,130 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SplashScreen /> should render without crashing 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <RCTSafeAreaView
+    emulateUnlessSupported={true}
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexBasis": 0,
+          "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "justifyContent": "center",
+        },
+      ]
+    }
+  >
+    <View
+      transition={
+        <Transition.Sequence>
+          <Transition.Out
+            type="fade"
+          />
+          <Transition.In
+            delayMs={1000}
+            type="fade"
+          />
+          <Transition.Change
+            interpolation="easeInOut"
+          />
+        </Transition.Sequence>
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "flexDirection": "row",
+            },
+            Object {
+              "alignItems": "center",
+              "justifyContent": "center",
+            },
+          ]
+        }
+      >
+        <Text
+          appearance="default"
+          category="h1"
+          style={
+            Array [
+              Object {
+                "color": "#222B45",
+                "fontFamily": "System",
+                "fontSize": 36,
+                "fontWeight": "800",
+              },
+              undefined,
+            ]
+          }
+        >
+          Animaly
+        </Text>
+        <Text
+          allowFontScaling={false}
+          style={
+            Array [
+              Object {
+                "color": undefined,
+                "fontSize": 40,
+              },
+              undefined,
+              Object {
+                "fontFamily": "Material Design Icons",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+              Object {},
+            ]
+          }
+        >
+          暑
+        </Text>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "flexDirection": "row",
+            },
+            Object {
+              "alignItems": "center",
+              "justifyContent": "center",
+            },
+            Object {
+              "marginTop": 5,
+            },
+          ]
+        }
+      >
+        <Text
+          appearance="default"
+          category="s2"
+          style={
+            Array [
+              Object {
+                "color": "#222B45",
+                "fontFamily": "System",
+                "fontSize": 13,
+                "fontWeight": "600",
+              },
+              undefined,
+            ]
+          }
+        >
+          Your everyday companion.
+        </Text>
+      </View>
+    </View>
+  </RCTSafeAreaView>
+</View>
+`;
