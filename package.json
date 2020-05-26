@@ -1,6 +1,6 @@
 {
   "name": "Animaly",
-  "version": "0.0.0-development",
+  "version": "0.6.0",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
