@@ -13,3 +13,14 @@ export const CenteredLayout = styled(Layout)`
   align-items: center;
   justify-content: center;
 `;
+
+export const CenteredSafeArea = styled.SafeAreaView`
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const RowView = styled.View`
+  flex-direction: row;
+`;
