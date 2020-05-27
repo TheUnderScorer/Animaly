@@ -13,8 +13,15 @@ export const CenteredLayout = styled(Layout)`
   align-items: center;
   justify-content: center;
 `;
+export const CenteredLayoutRow = styled(Layout)`
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+`;
 
-export const CenteredSafeArea = styled.SafeAreaView`
+export const CenteredSafeAreaRow = styled.SafeAreaView`
   flex: 1;
   flex-direction: row;
   align-items: center;

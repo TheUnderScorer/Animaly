@@ -2,6 +2,7 @@ import { Dispatch } from 'redux';
 import { AppActions } from '../../index';
 import AsyncStore from '../../../storage/AsyncStore';
 import { User } from '../../../typings/user';
+import { CreateUserInput } from './types';
 
 export const fetchCurrentUser = (asyncStore: AsyncStore) => async (
   dispatch: Dispatch<AppActions>,
@@ -13,8 +14,26 @@ export const fetchCurrentUser = (asyncStore: AsyncStore) => async (
     payload: currentUser,
   });
 
-  dispatch({
+  return dispatch({
     type: 'SetDidInitialFetch',
     payload: true,
+  });
+};
+
+export const createUser = (
+  asyncStore: AsyncStore,
+  input: CreateUserInput,
+) => async (dispatch: Dispatch<AppActions>) => {
+  const user: User = {
+    ...input,
+    createdAt: new Date(),
+    hasBeenWelcomed: false,
+  };
+
+  asyncStore.set('currentUser', user);
+
+  return dispatch({
+    type: 'SetCurrentUser',
+    payload: user,
   });
 };

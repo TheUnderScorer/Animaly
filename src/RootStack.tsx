@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 import { RootScreens } from './screens';
-import { CenteredLayout } from './styles/view';
-import { Button, Icon, Text } from '@ui-kitten/components';
-import { createStackNavigator } from '@react-navigation/stack';
+import {
+  createStackNavigator,
+  TransitionPresets,
+} from '@react-navigation/stack';
 import HomeScreen from './screens/HomeScreen';
-import { normalIcon } from './styles/icons';
 import { stackHeaderProps } from './static/headerProps';
 import SplashScreen from './screens/SplashScreen';
 import { useSelector } from 'react-redux';
