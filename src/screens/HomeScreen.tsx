@@ -11,7 +11,7 @@ const HomeScreen: FC<HomeScreenProps> = () => {
   const navigation = useNavigation();
 
   return (
-    <CenteredLayout level="1">
+    <CenteredLayout level="1" testID="homeScreen">
       <Text category="h1">Hello, React!</Text>
       <Button
         onPress={() => navigation.navigate(RootScreens.Splash)}

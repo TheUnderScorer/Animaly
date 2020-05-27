@@ -9,14 +9,25 @@ import SplashScreen from './SplashScreen';
 import { wait } from '../utils/timeout';
 import { createMockProxy } from 'jest-mock-proxy/lib';
 import AsyncStore from '../storage/AsyncStore';
+import { createStackNavigator } from '@react-navigation/stack';
+import { User } from '../typings/user';
+import { RootScreens } from '../screens';
+import HomeScreen from './HomeScreen';
 
 const mockStore = createMockProxy<AsyncStore>();
+
+const Stack = createStackNavigator();
 
 const wrapComponent = (cmp: ReactNode) => (
   <Provider store={store}>
     <AsyncStorageProvider defaultStorage={mockStore}>
       <ThemeProvider>
-        <NavigationContainer>{cmp}</NavigationContainer>
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName="test">
+            <Stack.Screen name="test">{() => cmp}</Stack.Screen>
+            <Stack.Screen name={RootScreens.Home} component={HomeScreen} />
+          </Stack.Navigator>
+        </NavigationContainer>
       </ThemeProvider>
     </AsyncStorageProvider>
   </Provider>
@@ -58,5 +69,24 @@ describe('<SplashScreen />', () => {
 
     const btn = cmp.getByTestId('getStarted');
     expect(btn).toBeDefined();
+  });
+
+  it('should redirect to HomeScreen if user is already created', async () => {
+    const user: User = {
+      name: 'Test',
+      createdAt: new Date(),
+      hasBeenWelcomed: false,
+    };
+
+    mockStore.get.mockResolvedValue(user);
+
+    const cmp = render(wrapComponent(<SplashScreen />));
+
+    await act(async () => {
+      await wait(1100);
+    });
+
+    const homeScreen = cmp.findByTestId('homeScreen');
+    expect(homeScreen).toBeDefined();
   });
 });
