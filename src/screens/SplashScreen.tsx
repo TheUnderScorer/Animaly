@@ -1,13 +1,14 @@
 import React, {
   FC,
   MutableRefObject,
+  useCallback,
   useEffect,
   useRef,
   useState,
 } from 'react';
-import { Button, Spinner } from '@ui-kitten/components';
-import { CenteredSafeArea, RowView } from '../styles/view';
-import { StyleSheet } from 'react-native';
+import { Layout, Spinner } from '@ui-kitten/components';
+import { RowView } from '../styles/view';
+import { StatusBar, StyleSheet, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppStore } from '../store';
 import {
@@ -18,31 +19,48 @@ import {
 import { useAsyncStorageContext } from '../providers/AsyncStorageProvider';
 import { fetchCurrentUser } from '../store/reducers/user/actions';
 import AppLogo from '../ui/molecules/AppLogo';
-import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import { useNavigation } from '@react-navigation/native';
 import { RootScreens } from '../screens';
+import { wait } from '../utils/timeout';
+import CreateUserForm from '../ui/organisms/CreateUserForm';
+import GetStartedBtn from '../ui/atoms/GetStartedBtn';
 
 export interface SplashScreenProps {}
 
 const styles = StyleSheet.create({
-  loaderRow: {
-    marginTop: 20,
-    height: 60,
+  logo: {
+    marginBottom: 40,
   },
   row: {
     justifyContent: 'center',
     alignItems: 'center',
+    width: 300,
+  },
+  layout: {
+    width: '100%',
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 
+export type CreationState = 'notCreating' | 'creating';
+
 const SplashScreen: FC<SplashScreenProps> = () => {
+  const transitionRef = useRef<TransitioningView>();
+
+  const [creationState, setCreationState] = useState<CreationState>(
+    'notCreating',
+  );
+
   const navigation = useNavigation();
 
-  const [isCreatingUser, setIsCreatingUser] = useState(false);
-
   const { storage } = useAsyncStorageContext();
-
-  const transitionRef = useRef<TransitioningView>();
 
   const dispatch = useDispatch();
   const currentUser = useSelector<AppStore>((store) => store.user.currentUser);
@@ -51,17 +69,26 @@ const SplashScreen: FC<SplashScreenProps> = () => {
   );
   const [loading, setLoading] = useState(false);
 
+  const handleToggleIsCreatingUser = useCallback(() => {
+    transitionRef.current!.animateNextTransition();
+    setCreationState('creating');
+  }, [transitionRef]);
+
   useEffect(() => {
-    if (didInitialUserFetch || !transitionRef.current || loading) {
+    if (didInitialUserFetch || loading || !transitionRef.current) {
       return;
     }
 
     const timeout = setTimeout(async () => {
-      setLoading(true);
-
       transitionRef.current!.animateNextTransition();
 
+      setLoading(true);
+
+      await wait(1000);
+
       await dispatch(fetchCurrentUser(storage));
+
+      setLoading(false);
     }, 1000);
 
     return () => {
@@ -70,54 +97,55 @@ const SplashScreen: FC<SplashScreenProps> = () => {
   }, [
     didInitialUserFetch,
     currentUser,
-    transitionRef,
     dispatch,
     loading,
     storage,
+    transitionRef,
   ]);
 
   useEffect(() => {
     if (didInitialUserFetch) {
-      if (!currentUser) {
-        transitionRef.current!.animateNextTransition();
-
-        setIsCreatingUser(true);
-        setLoading(false);
-      } else {
+      if (currentUser) {
         navigation.navigate(RootScreens.Home);
       }
     }
-  }, [didInitialUserFetch, currentUser, transitionRef, navigation]);
+  }, [didInitialUserFetch, currentUser, navigation, transitionRef]);
 
   return (
-    <CenteredSafeArea>
-      <Transitioning.View
-        ref={transitionRef as MutableRefObject<TransitioningView>}
-        transition={
-          <Transition.Sequence>
-            <Transition.Out type="fade" />
-            <Transition.In type="fade" delayMs={1000} />
-            <Transition.Change interpolation="easeInOut" />
-          </Transition.Sequence>
-        }>
-        <AppLogo />
-
-        {(isCreatingUser || loading) && (
-          <RowView style={[styles.row, styles.loaderRow]}>
-            {loading && <Spinner testID="splashSpinner" size="giant" />}
-            {isCreatingUser && (
-              <Button
-                testID="getStarted"
-                accessoryLeft={() => (
-                  <MaterialIcon name="pets" color="#fff" size={20} />
-                )}>
-                Get started
-              </Button>
-            )}
-          </RowView>
+    <Transitioning.View
+      style={styles.container}
+      ref={transitionRef as MutableRefObject<TransitioningView>}
+      transition={
+        <Transition.Sequence>
+          <Transition.Out type="fade" />
+          <Transition.In type="fade" delayMs={500} />
+          <Transition.Change interpolation="easeInOut" />
+        </Transition.Sequence>
+      }>
+      <Layout level="4" style={styles.layout}>
+        <StatusBar hidden />
+        {creationState === 'creating' && (
+          <View>
+            <CreateUserForm />
+          </View>
         )}
-      </Transitioning.View>
-    </CenteredSafeArea>
+        <View>
+          {creationState === 'notCreating' && (
+            <View style={styles.logo}>
+              <AppLogo />
+            </View>
+          )}
+          <RowView style={[styles.row]}>
+            {loading && <Spinner testID="splashSpinner" size="giant" />}
+            {didInitialUserFetch &&
+              !currentUser &&
+              creationState === 'notCreating' && (
+                <GetStartedBtn onPress={handleToggleIsCreatingUser} />
+              )}
+          </RowView>
+        </View>
+      </Layout>
+    </Transitioning.View>
   );
 };
 
