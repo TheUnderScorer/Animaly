@@ -1,9 +1,6 @@
 import React, { FC } from 'react';
 import { RootScreens } from './screens';
-import {
-  createStackNavigator,
-  TransitionPresets,
-} from '@react-navigation/stack';
+import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './screens/HomeScreen';
 import { stackHeaderProps } from './static/headerProps';
 import SplashScreen from './screens/SplashScreen';
