@@ -8,123 +8,442 @@ exports[`<SplashScreen /> should render without crashing 1`] = `
     }
   }
 >
-  <RCTSafeAreaView
-    emulateUnlessSupported={true}
+  <View
     style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "flexBasis": 0,
-          "flexDirection": "row",
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "justifyContent": "center",
-        },
-      ]
+      Object {
+        "flex": 1,
+      }
     }
   >
-    <View
-      transition={
-        <Transition.Sequence>
-          <Transition.Out
-            type="fade"
-          />
-          <Transition.In
-            delayMs={1000}
-            type="fade"
-          />
-          <Transition.Change
-            interpolation="easeInOut"
-          />
-        </Transition.Sequence>
+    <RNCSafeAreaProvider
+      onInsetsChange={[Function]}
+      style={
+        Object {
+          "flex": 1,
+        }
       }
     >
       <View
+        onLayout={[Function]}
         style={
-          Array [
-            Object {
-              "flexDirection": "row",
-            },
-            Object {
-              "alignItems": "center",
-              "justifyContent": "center",
-            },
-          ]
+          Object {
+            "flex": 1,
+          }
         }
       >
-        <Text
-          appearance="default"
-          category="h1"
+        <View
+          pointerEvents="box-none"
           style={
-            Array [
-              Object {
-                "color": "#222B45",
-                "fontFamily": "System",
-                "fontSize": 36,
-                "fontWeight": "800",
-              },
-              undefined,
-            ]
+            Object {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            }
           }
         >
-          Animaly
-        </Text>
-        <Text
-          allowFontScaling={false}
-          style={
-            Array [
+          <View
+            accessibilityElementsHidden={false}
+            closing={false}
+            gestureVelocityImpact={0.3}
+            importantForAccessibility="auto"
+            onClose={[Function]}
+            onGestureBegin={[Function]}
+            onGestureCanceled={[Function]}
+            onOpen={[Function]}
+            onTransitionStart={[Function]}
+            pointerEvents="box-none"
+            style={
               Object {
-                "color": undefined,
-                "fontSize": 40,
-              },
-              undefined,
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+              }
+            }
+            transitionSpec={
               Object {
-                "fontFamily": "Material Design Icons",
-                "fontStyle": "normal",
-                "fontWeight": "normal",
-              },
-              Object {},
-            ]
-          }
-        >
-          暑
-        </Text>
+                "close": Object {
+                  "animation": "spring",
+                  "config": Object {
+                    "damping": 500,
+                    "mass": 3,
+                    "overshootClamping": true,
+                    "restDisplacementThreshold": 10,
+                    "restSpeedThreshold": 10,
+                    "stiffness": 1000,
+                  },
+                },
+                "open": Object {
+                  "animation": "spring",
+                  "config": Object {
+                    "damping": 500,
+                    "mass": 3,
+                    "overshootClamping": true,
+                    "restDisplacementThreshold": 10,
+                    "restSpeedThreshold": 10,
+                    "stiffness": 1000,
+                  },
+                },
+              }
+            }
+          >
+            <View
+              pointerEvents="box-none"
+              style={
+                Object {
+                  "flex": 1,
+                  "marginTop": 64,
+                }
+              }
+            >
+              <View
+                enabled={false}
+                hitSlop={
+                  Object {
+                    "right": -700,
+                  }
+                }
+                maxDeltaY={20}
+                minOffsetX={5}
+                onHandlerStateChange={[Function]}
+              >
+                <View
+                  style={
+                    Object {
+                      "flex": 1,
+                      "transform": Array [
+                        Object {
+                          "translateX": 0,
+                        },
+                        Object {
+                          "translateX": 0,
+                        },
+                      ],
+                    }
+                  }
+                >
+                  <View
+                    pointerEvents="none"
+                    style={
+                      Object {
+                        "backgroundColor": "rgb(242, 242, 242)",
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "shadowColor": "#000",
+                        "shadowOffset": Object {
+                          "height": 1,
+                          "width": -1,
+                        },
+                        "shadowOpacity": 0.3,
+                        "shadowRadius": 5,
+                        "top": 0,
+                        "width": 3,
+                      }
+                    }
+                  />
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "flex": 1,
+                          "overflow": "hidden",
+                        },
+                        Array [
+                          Object {
+                            "backgroundColor": "rgb(242, 242, 242)",
+                          },
+                          undefined,
+                        ],
+                      ]
+                    }
+                  >
+                    <View
+                      style={
+                        Object {
+                          "flex": 1,
+                          "flexDirection": "column-reverse",
+                        }
+                      }
+                    >
+                      <View
+                        style={
+                          Object {
+                            "flex": 1,
+                          }
+                        }
+                      >
+                        <View
+                          style={
+                            Object {
+                              "alignItems": "center",
+                              "flex": 1,
+                              "justifyContent": "center",
+                            }
+                          }
+                          transition={
+                            <Transition.Sequence>
+                              <Transition.Out
+                                type="fade"
+                              />
+                              <Transition.In
+                                delayMs={500}
+                                type="fade"
+                              />
+                              <Transition.Change
+                                interpolation="easeInOut"
+                              />
+                            </Transition.Sequence>
+                          }
+                        >
+                          <View
+                            appearance="default"
+                            level="4"
+                            style={
+                              Array [
+                                Object {
+                                  "backgroundColor": "#E4E9F2",
+                                },
+                                Object {
+                                  "alignItems": "center",
+                                  "height": "100%",
+                                  "justifyContent": "center",
+                                  "width": "100%",
+                                },
+                              ]
+                            }
+                          >
+                            <View>
+                              <View
+                                style={
+                                  Object {
+                                    "marginBottom": 40,
+                                  }
+                                }
+                              >
+                                <View
+                                  style={
+                                    Array [
+                                      Object {
+                                        "flexDirection": "row",
+                                      },
+                                      Object {
+                                        "alignItems": "center",
+                                        "justifyContent": "center",
+                                      },
+                                    ]
+                                  }
+                                >
+                                  <Text
+                                    appearance="default"
+                                    category="h1"
+                                    style={
+                                      Array [
+                                        Object {
+                                          "color": "#222B45",
+                                          "fontFamily": "System",
+                                          "fontSize": 36,
+                                          "fontWeight": "800",
+                                        },
+                                        undefined,
+                                      ]
+                                    }
+                                  >
+                                    Animaly
+                                  </Text>
+                                  <Text
+                                    allowFontScaling={false}
+                                    style={
+                                      Array [
+                                        Object {
+                                          "color": undefined,
+                                          "fontSize": 40,
+                                        },
+                                        undefined,
+                                        Object {
+                                          "fontFamily": "Material Design Icons",
+                                          "fontStyle": "normal",
+                                          "fontWeight": "normal",
+                                        },
+                                        Object {},
+                                      ]
+                                    }
+                                  >
+                                    暑
+                                  </Text>
+                                </View>
+                                <View
+                                  style={
+                                    Array [
+                                      Object {
+                                        "flexDirection": "row",
+                                      },
+                                      Object {
+                                        "alignItems": "center",
+                                        "justifyContent": "center",
+                                      },
+                                      Object {
+                                        "marginTop": 5,
+                                      },
+                                    ]
+                                  }
+                                >
+                                  <Text
+                                    appearance="default"
+                                    category="s2"
+                                    style={
+                                      Array [
+                                        Object {
+                                          "color": "#222B45",
+                                          "fontFamily": "System",
+                                          "fontSize": 13,
+                                          "fontWeight": "600",
+                                        },
+                                        undefined,
+                                      ]
+                                    }
+                                  >
+                                    Your everyday companion.
+                                  </Text>
+                                </View>
+                              </View>
+                              <View
+                                style={
+                                  Array [
+                                    Object {
+                                      "flexDirection": "row",
+                                    },
+                                    Object {
+                                      "alignItems": "center",
+                                      "justifyContent": "center",
+                                      "width": 300,
+                                    },
+                                  ]
+                                }
+                              />
+                            </View>
+                          </View>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
       </View>
       <View
+        pointerEvents="box-none"
         style={
-          Array [
-            Object {
-              "flexDirection": "row",
-            },
-            Object {
-              "alignItems": "center",
-              "justifyContent": "center",
-            },
-            Object {
-              "marginTop": 5,
-            },
-          ]
+          Object {
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          }
         }
       >
-        <Text
-          appearance="default"
-          category="s2"
-          style={
-            Array [
-              Object {
-                "color": "#222B45",
-                "fontFamily": "System",
-                "fontSize": 13,
-                "fontWeight": "600",
-              },
-              undefined,
-            ]
-          }
+        <View
+          accessibilityElementsHidden={false}
+          importantForAccessibility="auto"
+          onLayout={[Function]}
+          pointerEvents="box-none"
+          style={null}
         >
-          Your everyday companion.
-        </Text>
+          <View
+            pointerEvents="none"
+            style={
+              Object {
+                "bottom": 0,
+                "left": 0,
+                "opacity": 1,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "backgroundColor": "rgb(255, 255, 255)",
+                  "borderBottomColor": "rgb(224, 224, 224)",
+                  "flex": 1,
+                  "shadowColor": "rgb(224, 224, 224)",
+                  "shadowOffset": Object {
+                    "height": 0.5,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.85,
+                  "shadowRadius": 0,
+                }
+              }
+            />
+          </View>
+          <View
+            pointerEvents="box-none"
+            style={
+              Object {
+                "height": 64,
+                "maxHeight": undefined,
+                "minHeight": undefined,
+                "opacity": undefined,
+                "transform": undefined,
+              }
+            }
+          >
+            <View
+              pointerEvents="none"
+              style={
+                Object {
+                  "height": 20,
+                }
+              }
+            />
+            <View
+              pointerEvents="box-none"
+              style={
+                Object {
+                  "alignItems": "center",
+                  "flex": 1,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                }
+              }
+            >
+              <View
+                pointerEvents="box-none"
+                style={
+                  Object {
+                    "marginHorizontal": 16,
+                    "opacity": 1,
+                  }
+                }
+              >
+                <Text
+                  accessibilityRole="header"
+                  numberOfLines={1}
+                  onLayout={[Function]}
+                  style={
+                    Object {
+                      "color": "rgb(28, 28, 30)",
+                      "fontSize": 17,
+                      "fontWeight": "600",
+                    }
+                  }
+                >
+                  test
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
       </View>
-    </View>
-  </RCTSafeAreaView>
+    </RNCSafeAreaProvider>
+  </View>
 </View>
 `;
