@@ -18,10 +18,5 @@ const reducers = combineReducers({
 });
 const middleware = [thunk];
 
-const store = createStore(
-  reducers,
-  initialState,
-  applyMiddleware(...middleware),
-);
-
-export default store;
+export const makeStore = () =>
+  createStore(reducers, initialState, applyMiddleware(...middleware));

@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import store from '../store';
+import { makeStore } from '../store';
 import AsyncStorageProvider from '../providers/AsyncStorageProvider';
 import ThemeProvider from '../providers/ThemeProvider';
 import { NavigationContainer } from '@react-navigation/native';
@@ -19,7 +19,7 @@ const mockStore = createMockProxy<AsyncStore>();
 const Stack = createStackNavigator();
 
 const wrapComponent = (cmp: ReactNode) => (
-  <Provider store={store}>
+  <Provider store={makeStore()}>
     <AsyncStorageProvider defaultStorage={mockStore}>
       <ThemeProvider>
         <NavigationContainer>
@@ -60,17 +60,6 @@ describe('<SplashScreen />', () => {
     expect(spinner).toBeDefined();
   });
 
-  it('should show "Get Started" btn if user does not exist', async () => {
-    const cmp = render(wrapComponent(<SplashScreen />));
-
-    await act(async () => {
-      await wait(1100);
-    });
-
-    const btn = cmp.getByTestId('getStarted');
-    expect(btn).toBeDefined();
-  });
-
   it('should redirect to HomeScreen if user is already created', async () => {
     const user: User = {
       name: 'Test',
@@ -88,5 +77,16 @@ describe('<SplashScreen />', () => {
 
     const homeScreen = await cmp.findByTestId('homeScreen');
     expect(homeScreen).toBeDefined();
+  });
+
+  it('should show "Get Started" btn if user does not exist', async () => {
+    const cmp = render(wrapComponent(<SplashScreen />));
+
+    await act(async () => {
+      await wait(1100);
+    });
+
+    const btn = await cmp.findByTestId('getStarted');
+    expect(btn).toBeDefined();
   });
 });

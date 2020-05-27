@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { Provider } from 'react-redux';
-import store from '../../../store';
+import { makeStore } from '../../../store';
 import { act, fireEvent, render } from 'react-native-testing-library';
 import CreateUserForm from './index';
 import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
@@ -13,7 +13,7 @@ const wrapComponent = (cmp: ReactNode) => (
   <ApplicationProvider {...eva} theme={eva.dark}>
     <IconRegistry icons={EvaIconsPack} />
     <AsyncStorageProvider>
-      <Provider store={store}>{cmp}</Provider>
+      <Provider store={makeStore()}>{cmp}</Provider>
     </AsyncStorageProvider>
   </ApplicationProvider>
 );
