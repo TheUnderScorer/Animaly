@@ -86,7 +86,7 @@ describe('<SplashScreen />', () => {
       await wait(1100);
     });
 
-    const homeScreen = cmp.findByTestId('homeScreen');
+    const homeScreen = await cmp.findByTestId('homeScreen');
     expect(homeScreen).toBeDefined();
   });
 });

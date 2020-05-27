@@ -6,8 +6,11 @@ import { getBehavior } from '../../../utils/keyboardAvoidingView';
 import { useDispatch } from 'react-redux';
 import { createUser } from '../../../store/reducers/user/actions';
 import { useAsyncStorageContext } from '../../../providers/AsyncStorageProvider';
+import { User } from '../../../typings/user';
 
-export interface CreateUserFormProps {}
+export interface CreateUserFormProps {
+  onCreate?: (user: User) => any;
+}
 
 const styles = StyleSheet.create({
   input: {
@@ -28,7 +31,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const CreateUserForm: FC<CreateUserFormProps> = () => {
+const CreateUserForm: FC<CreateUserFormProps> = ({ onCreate }) => {
   const { storage } = useAsyncStorageContext();
   const dispatch = useDispatch();
 
@@ -47,16 +50,21 @@ const CreateUserForm: FC<CreateUserFormProps> = () => {
 
     setLoading(true);
 
-    await dispatch(
+    const user = await dispatch<any>(
       createUser(storage, {
         name,
       }),
     );
-  }, [name, storage, dispatch]);
+
+    if (onCreate) {
+      onCreate(user);
+    }
+  }, [name, storage, dispatch, onCreate]);
 
   return (
     <KeyboardAvoidingView behavior={getBehavior()} style={styles.container}>
       <Input
+        testID="createUserInput"
         disabled={loading}
         label={() => (
           <Text style={styles.title} category="h4">
@@ -71,6 +79,7 @@ const CreateUserForm: FC<CreateUserFormProps> = () => {
         placeholder="Enter your name..."
       />
       <Button
+        testID="createUserBtn"
         disabled={loading}
         size="medium"
         onPress={handleSave}

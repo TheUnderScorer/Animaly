@@ -32,8 +32,10 @@ export const createUser = (
 
   asyncStore.set('currentUser', user);
 
-  return dispatch({
+  dispatch({
     type: 'SetCurrentUser',
     payload: user,
   });
+
+  return user;
 };
