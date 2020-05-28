@@ -8,7 +8,14 @@ import React, {
 } from 'react';
 import { Layout, Spinner } from '@ui-kitten/components';
 import { RowView } from '../styles/view';
-import { StatusBar, StyleSheet, View } from 'react-native';
+import {
+  Image,
+  StatusBar,
+  StyleSheet,
+  View,
+  Text,
+  Linking,
+} from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppStore } from '../store';
 import {
@@ -24,6 +31,9 @@ import { RootScreens } from '../screens';
 import { wait } from '../utils/timeout';
 import CreateUserForm from '../ui/organisms/CreateUserForm';
 import GetStartedBtn from '../ui/atoms/GetStartedBtn';
+import Bg from '../assets/paws.jpg';
+import { BackgroundOverlay } from '../styles/overlay';
+import { A } from '../styles/typography';
 
 export interface SplashScreenProps {}
 
@@ -46,6 +56,19 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  bg: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    zIndex: 0,
+    top: 0,
+  },
+  bgSource: {
+    position: 'absolute',
+    color: '#fff',
+    bottom: 20,
+    left: 10,
   },
 });
 
@@ -123,12 +146,24 @@ const SplashScreen: FC<SplashScreenProps> = () => {
         </Transition.Sequence>
       }>
       <Layout level="4" style={styles.layout}>
-        <StatusBar hidden />
-        {creationState === 'creating' && (
-          <View>
-            <CreateUserForm />
-          </View>
+        {creationState === 'notCreating' && (
+          <>
+            <Image source={Bg} style={styles.bg} />
+            <BackgroundOverlay />
+            <Text style={styles.bgSource}>
+              Designed by{' '}
+              <A
+                variant="dark"
+                onPress={() =>
+                  Linking.openURL('https://www.freepik.com/pch-vector')
+                }>
+                pch-vector
+              </A>
+            </Text>
+          </>
         )}
+        <StatusBar hidden />
+        {creationState === 'creating' && <CreateUserForm />}
         <View>
           {creationState === 'notCreating' && (
             <View style={styles.logo}>

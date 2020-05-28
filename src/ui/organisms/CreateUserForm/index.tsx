@@ -1,5 +1,10 @@
 import React, { FC, useCallback, useState } from 'react';
-import { KeyboardAvoidingView, StyleSheet } from 'react-native';
+import {
+  Image,
+  KeyboardAvoidingView,
+  StyleSheet,
+  useWindowDimensions,
+} from 'react-native';
 import { Button, Icon, Input, Spinner, Text } from '@ui-kitten/components';
 import { normalIcon } from '../../../styles/icons';
 import { getBehavior } from '../../../utils/keyboardAvoidingView';
@@ -7,6 +12,7 @@ import { useDispatch } from 'react-redux';
 import { createUser } from '../../../store/reducers/user/actions';
 import { useAsyncStorageContext } from '../../../providers/AsyncStorageProvider';
 import { User } from '../../../typings/user';
+import ControlImg from '../../../assets/106.png';
 
 export interface CreateUserFormProps {
   onCreate?: (user: User) => any;
@@ -17,10 +23,14 @@ const styles = StyleSheet.create({
     minWidth: 300,
   },
   container: {
-    minWidth: 300,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 1,
+    padding: 20,
   },
   title: {
     textAlign: 'center',
+    marginTop: 60,
     marginBottom: 40,
   },
   btn: {
@@ -29,9 +39,14 @@ const styles = StyleSheet.create({
   labelView: {
     alignItems: 'center',
   },
+  img: {
+    marginBottom: 40,
+  },
 });
 
 const CreateUserForm: FC<CreateUserFormProps> = ({ onCreate }) => {
+  const dimensions = useWindowDimensions();
+
   const { storage } = useAsyncStorageContext();
   const dispatch = useDispatch();
 
@@ -63,14 +78,22 @@ const CreateUserForm: FC<CreateUserFormProps> = ({ onCreate }) => {
 
   return (
     <KeyboardAvoidingView behavior={getBehavior()} style={styles.container}>
+      <Image
+        fadeDuration={1000}
+        resizeMode="cover"
+        source={ControlImg}
+        style={{
+          overflow: 'visible',
+          width: dimensions.width * 0.9,
+          height: dimensions.height * 0.5,
+        }}
+      />
+      <Text style={styles.title} category="h4">
+        How should I call you?
+      </Text>
       <Input
         testID="createUserInput"
         disabled={loading}
-        label={() => (
-          <Text style={styles.title} category="h4">
-            How should I call you?
-          </Text>
-        )}
         value={name}
         status={error ? 'danger' : 'basic'}
         size="large"
@@ -79,9 +102,9 @@ const CreateUserForm: FC<CreateUserFormProps> = ({ onCreate }) => {
         placeholder="Enter your name..."
       />
       <Button
+        size="small"
         testID="createUserBtn"
         disabled={loading}
-        size="medium"
         onPress={handleSave}
         accessoryLeft={() =>
           loading ? (
