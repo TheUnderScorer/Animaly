@@ -8,14 +8,7 @@ import React, {
 } from 'react';
 import { Layout, Spinner } from '@ui-kitten/components';
 import { RowView } from '../styles/view';
-import {
-  Image,
-  StatusBar,
-  StyleSheet,
-  View,
-  Text,
-  Linking,
-} from 'react-native';
+import { Image, StatusBar, StyleSheet, Text, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppStore } from '../store';
 import {
@@ -33,7 +26,7 @@ import CreateUserForm from '../ui/organisms/CreateUserForm';
 import GetStartedBtn from '../ui/atoms/GetStartedBtn';
 import Bg from '../assets/paws.jpg';
 import { BackgroundOverlay } from '../styles/overlay';
-import { A } from '../styles/typography';
+import Link from '../ui/atoms/Link';
 
 export interface SplashScreenProps {}
 
@@ -152,13 +145,9 @@ const SplashScreen: FC<SplashScreenProps> = () => {
             <BackgroundOverlay />
             <Text style={styles.bgSource}>
               Designed by{' '}
-              <A
-                variant="dark"
-                onPress={() =>
-                  Linking.openURL('https://www.freepik.com/pch-vector')
-                }>
+              <Link variant="dark" href="https://www.freepik.com/pch-vector">
                 pch-vector
-              </A>
+              </Link>
             </Text>
           </>
         )}
