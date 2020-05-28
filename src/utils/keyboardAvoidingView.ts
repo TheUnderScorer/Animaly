@@ -1,4 +1,4 @@
 import { Platform } from 'react-native';
 
 export const getBehavior = () =>
-  Platform.OS === 'ios' ? 'position' : 'height';
+  Platform.OS === 'ios' ? 'position' : 'padding';

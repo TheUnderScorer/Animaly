@@ -32,7 +32,9 @@ exports[`<AppLogo /> should render without crashing 1`] = `
             "fontSize": 36,
             "fontWeight": "800",
           },
-          undefined,
+          Object {
+            "color": "#fff",
+          },
         ]
       }
     >
@@ -46,7 +48,9 @@ exports[`<AppLogo /> should render without crashing 1`] = `
             "color": undefined,
             "fontSize": 40,
           },
-          undefined,
+          Object {
+            "color": "#fff",
+          },
           Object {
             "fontFamily": "Material Design Icons",
             "fontStyle": "normal",
@@ -86,7 +90,9 @@ exports[`<AppLogo /> should render without crashing 1`] = `
             "fontSize": 13,
             "fontWeight": "600",
           },
-          undefined,
+          Object {
+            "color": "#fff",
+          },
         ]
       }
     >
