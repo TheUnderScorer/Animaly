@@ -94,6 +94,8 @@ target 'Animaly' do
   end
 end
 
+pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
+
 target 'Animaly-tvOS' do
   # Pods for Animaly-tvOS
 

@@ -1,28 +1,40 @@
 import React, { FC } from 'react';
-import { useNavigation } from '@react-navigation/native';
-import { CenteredLayout } from '../styles/view';
-import { Button, Icon, Text } from '@ui-kitten/components';
-import { RootScreens } from '../screens';
-import { normalIcon } from '../styles/icons';
+import UserWelcome from '../ui/molecules/UserWelcome';
+import useTimeOfDayBackgroundAndText from '../hooks/common/useTimeOfDayBackgroundAndText';
+import { SafeAreaView, StatusBar, StyleSheet, View } from 'react-native';
+import FeaturesGrid from '../ui/molecules/FeaturesGrid';
+import { Layout } from '@ui-kitten/components';
+import HomeBackground from '../ui/atoms/HomeBackground';
 
 export interface HomeScreenProps {}
 
+const styles = StyleSheet.create({
+  layout: {
+    height: '100%',
+  },
+  text: {
+    color: '#fff',
+  },
+  inner: {
+    bottom: 60,
+  },
+});
+
 const HomeScreen: FC<HomeScreenProps> = () => {
-  const navigation = useNavigation();
+  const { text } = useTimeOfDayBackgroundAndText();
 
   return (
-    <CenteredLayout level="1" testID="homeScreen">
-      <Text category="h1">Hello, React!</Text>
-      <Button
-        onPress={() => navigation.navigate(RootScreens.Splash)}
-        appearance="filled"
-        size="large"
-        accessoryLeft={() => (
-          <Icon fill="#8F9BB3" style={normalIcon} name="star" />
-        )}>
-        Click me!
-      </Button>
-    </CenteredLayout>
+    <Layout style={styles.layout} level="2">
+      <StatusBar barStyle="light-content" />
+      <HomeBackground>
+        <UserWelcome textStyle={styles.text} timeOfDay={text} />
+      </HomeBackground>
+      <SafeAreaView style={styles.layout}>
+        <View style={styles.inner}>
+          <FeaturesGrid />
+        </View>
+      </SafeAreaView>
+    </Layout>
   );
 };
 

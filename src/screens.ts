@@ -12,3 +12,8 @@ export enum AppScreens {
   Welcome = 'Welcome',
   Home = 'Home',
 }
+
+export enum FeatureScreens {
+  MindClear = 'MindClear',
+  AnimalPhotos = 'AnimalPhotos',
+}

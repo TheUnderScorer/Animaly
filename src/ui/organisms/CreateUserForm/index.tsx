@@ -137,7 +137,7 @@ const CreateUserForm: FC<CreateUserFormProps> = ({ onCreate }) => {
             value={name}
             status={error ? 'danger' : 'basic'}
             size="large"
-            caption={error ? error : 'It can be changed later.'}
+            caption={error}
             onChangeText={setName}
             placeholder="Enter your name..."
           />

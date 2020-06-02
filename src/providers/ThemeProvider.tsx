@@ -20,7 +20,7 @@ export interface ThemeContextType {
 }
 
 const ThemeContext = createContext<ThemeContextType>(defaultValue);
-export const useAppContext = () => useContext(ThemeContext);
+export const useThemeContext = () => useContext(ThemeContext);
 
 const ThemeProvider: FC = ({ children }) => {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
