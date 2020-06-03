@@ -7,8 +7,8 @@ export interface LinkProps extends AProps {
 }
 
 const Link: FC<LinkProps> = ({ variant, href, children }) => {
-  const handlePress = useCallback(() => {
-    Linking.openURL(href);
+  const handlePress = useCallback(async () => {
+    await Linking.openURL(href);
   }, [href]);
 
   return (
