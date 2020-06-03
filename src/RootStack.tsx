@@ -5,7 +5,7 @@ import { stackHeaderProps } from './static/headerProps';
 import SplashScreen from './screens/SplashScreen';
 import { useSelector } from 'react-redux';
 import { AppStore } from './store';
-import HomeStack from './HomeStack';
+import HomeNavigator from './HomeNavigator';
 
 const Stack = createStackNavigator();
 
@@ -26,7 +26,7 @@ const RootStack: FC<RootStackProps> = () => {
             options={{
               headerShown: false,
             }}
-            component={HomeStack}
+            component={HomeNavigator}
             name={RootScreens.Home}
           />
         )}
