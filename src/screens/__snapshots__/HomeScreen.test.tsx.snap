@@ -1,0 +1,318 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<HomeScreen /> should render without crashing 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    appearance="default"
+    level="2"
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#F7F9FC",
+        },
+        Object {
+          "height": "100%",
+        },
+      ]
+    }
+    testID="homeScreen"
+  >
+    <View
+      accessibilityIgnoresInvertColors={true}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "justifyContent": "center",
+            "maxHeight": 400,
+            "overflow": "hidden",
+            "paddingBottom": 40,
+          },
+          Object {
+            "height": 400.2,
+          },
+        ]
+      }
+    >
+      <Image
+        source={
+          Object {
+            "uri": "https://source.unsplash.com/weekly?afternoon",
+          }
+        }
+        style={
+          Array [
+            Object {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            Object {
+              "height": undefined,
+              "width": undefined,
+            },
+            undefined,
+          ]
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "backgroundColor": "rgba(0, 0, 0, 0.3)",
+              "height": "100%",
+              "position": "absolute",
+              "width": "100%",
+              "zIndex": 0,
+            },
+            Object {
+              "height": 1334,
+            },
+          ]
+        }
+      />
+    </View>
+    <RCTSafeAreaView
+      emulateUnlessSupported={true}
+      style={
+        Object {
+          "height": "100%",
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "bottom": 60,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+              "flexWrap": "wrap",
+              "justifyContent": "space-evenly",
+            }
+          }
+        >
+          <View
+            accessible={true}
+            focusable={false}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "#FFFFFF",
+                "borderColor": "#E4E9F2",
+                "borderRadius": 4,
+                "borderWidth": 1,
+                "height": 150,
+                "justifyContent": "center",
+                "minWidth": 150,
+                "opacity": 1,
+                "overflow": "hidden",
+                "width": "45%",
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "backgroundColor": undefined,
+                  "height": 0,
+                }
+              }
+            />
+            <View
+              style={
+                Object {
+                  "paddingHorizontal": 24,
+                  "paddingVertical": 16,
+                }
+              }
+            >
+              <View
+                accessible={true}
+                focusable={false}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "justifyContent": "center",
+                    "opacity": 1,
+                  }
+                }
+              >
+                <Text
+                  allowFontScaling={false}
+                  style={
+                    Array [
+                      Object {
+                        "color": undefined,
+                        "fontSize": 50,
+                      },
+                      undefined,
+                      Object {
+                        "fontFamily": "Material Icons",
+                        "fontStyle": "normal",
+                        "fontWeight": "normal",
+                      },
+                      Object {},
+                    ]
+                  }
+                >
+                  
+                </Text>
+                <Text
+                  appearance="default"
+                  category="p1"
+                  style={
+                    Array [
+                      Object {
+                        "color": "#222B45",
+                        "fontFamily": "System",
+                        "fontSize": 15,
+                        "fontWeight": "400",
+                      },
+                      Object {
+                        "marginTop": 15,
+                      },
+                    ]
+                  }
+                >
+                  Mind Clear
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            accessible={true}
+            focusable={false}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "#FFFFFF",
+                "borderColor": "#E4E9F2",
+                "borderRadius": 4,
+                "borderWidth": 1,
+                "height": 150,
+                "justifyContent": "center",
+                "minWidth": 150,
+                "opacity": 1,
+                "overflow": "hidden",
+                "width": "45%",
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "backgroundColor": undefined,
+                  "height": 0,
+                }
+              }
+            />
+            <View
+              style={
+                Object {
+                  "paddingHorizontal": 24,
+                  "paddingVertical": 16,
+                }
+              }
+            >
+              <View
+                accessible={true}
+                focusable={false}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "justifyContent": "center",
+                    "opacity": 1,
+                  }
+                }
+              >
+                <Text
+                  allowFontScaling={false}
+                  style={
+                    Array [
+                      Object {
+                        "color": undefined,
+                        "fontSize": 50,
+                      },
+                      undefined,
+                      Object {
+                        "fontFamily": "FontAwesome5Free-Solid",
+                        "fontStyle": "normal",
+                        "fontWeight": "normal",
+                      },
+                      Object {
+                        "fontWeight": "900",
+                      },
+                    ]
+                  }
+                >
+                  
+                </Text>
+                <Text
+                  appearance="default"
+                  category="p1"
+                  style={
+                    Array [
+                      Object {
+                        "color": "#222B45",
+                        "fontFamily": "System",
+                        "fontSize": 15,
+                        "fontWeight": "400",
+                      },
+                      Object {
+                        "marginTop": 15,
+                      },
+                    ]
+                  }
+                >
+                  Animal Photos
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </RCTSafeAreaView>
+  </View>
+</View>
+`;

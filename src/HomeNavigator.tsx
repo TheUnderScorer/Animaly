@@ -1,25 +1,17 @@
-import React, { FC, ReactElement } from 'react';
-import {
-  BottomTabBarProps,
-  createBottomTabNavigator,
-} from '@react-navigation/bottom-tabs';
-import { Route, SafeAreaView, View } from 'react-native';
-import {
-  BottomNavigation,
-  BottomNavigationTab,
-  Icon,
-  Text,
-} from '@ui-kitten/components';
+import React, { FC } from 'react';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Icon, Layout, Text } from '@ui-kitten/components';
 import { HomeFooterScreens } from './screens';
 import HomeScreen from './screens/HomeScreen';
 import { normalIcon } from './styles/icons';
 import FooterNavigator from './ui/molecules/FooterNavigator';
+import { SafeAreaView } from 'react-native';
 
 export interface HomeStackProps {}
 
 const TabNavigator = createBottomTabNavigator();
 
-const HomeStack: FC<HomeStackProps> = () => {
+const HomeNavigator: FC<HomeStackProps> = () => {
   return (
     <TabNavigator.Navigator
       tabBar={(props) => <FooterNavigator {...props} />}
@@ -43,13 +35,15 @@ const HomeStack: FC<HomeStackProps> = () => {
         }}
         name={HomeFooterScreens.Settings}>
         {() => (
-          <View>
-            <Text>Settings</Text>
-          </View>
+          <SafeAreaView>
+            <Layout level="2">
+              <Text>Settings</Text>
+            </Layout>
+          </SafeAreaView>
         )}
       </TabNavigator.Screen>
     </TabNavigator.Navigator>
   );
 };
 
-export default HomeStack;
+export default HomeNavigator;
