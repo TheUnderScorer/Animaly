@@ -226,35 +226,7 @@ exports[`<CreateUserForm /> should render without crashing 1`] = `
                   },
                 ]
               }
-            >
-              <Text
-                appearance="default"
-                category="p1"
-                style={
-                  Array [
-                    Object {
-                      "color": "#FFFFFF",
-                      "fontFamily": "System",
-                      "fontSize": 15,
-                      "fontWeight": "400",
-                    },
-                    Array [
-                      Object {
-                        "color": "#8F9BB3",
-                        "fontFamily": "System",
-                        "fontSize": 12,
-                        "fontWeight": "400",
-                      },
-                      Object {
-                        "textAlign": "left",
-                      },
-                    ],
-                  ]
-                }
-              >
-                It can be changed later.
-              </Text>
-            </View>
+            />
           </View>
           <View
             accessible={true}

@@ -24,7 +24,7 @@ const HomeScreen: FC<HomeScreenProps> = () => {
   const { text } = useTimeOfDayBackgroundAndText();
 
   return (
-    <Layout style={styles.layout} level="2">
+    <Layout style={styles.layout} level="2" testID="homeScreen">
       <StatusBar barStyle="light-content" />
       <HomeBackground>
         <UserWelcome textStyle={styles.text} timeOfDay={text} />
