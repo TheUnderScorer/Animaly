@@ -1,35 +1,42 @@
 import React, { FC } from 'react';
-import { StyleSheet } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
-import { useTheme } from '@ui-kitten/components';
+import { ImageBackground, StyleSheet, useWindowDimensions } from 'react-native';
+import { BackgroundOverlay } from '../../../styles/overlay';
 
-export interface HomeBackgroundProps {}
+export interface HomeBackgroundProps {
+  background: string;
+}
 
 const styles = StyleSheet.create({
-  gradient: {
+  image: {
     alignItems: 'center',
-    paddingTop: 100,
-    paddingBottom: 100,
+    justifyContent: 'center',
+    paddingBottom: 40,
+    maxHeight: 400,
+    overflow: 'hidden',
   },
 });
 
-const HomeBackground: FC<HomeBackgroundProps> = ({ children }) => {
-  const theme = useTheme();
+const HomeBackground: FC<HomeBackgroundProps> = ({ children, background }) => {
+  const dimensions = useWindowDimensions();
 
   return (
-    <LinearGradient
-      style={styles.gradient}
-      colors={[
-        theme['color-primary-300'],
-        theme['color-primary-400'],
-        theme['color-primary-500'],
-        theme['color-primary-600'],
-        theme['color-primary-700'],
-        theme['color-primary-800'],
-        theme['color-primary-900'],
-      ]}>
+    <ImageBackground
+      style={[
+        styles.image,
+        {
+          height: dimensions.height * 0.3,
+        },
+      ]}
+      source={{
+        uri: background,
+      }}>
+      <BackgroundOverlay
+        style={{
+          height: dimensions.height,
+        }}
+      />
       {children}
-    </LinearGradient>
+    </ImageBackground>
   );
 };
 

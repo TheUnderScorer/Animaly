@@ -21,12 +21,16 @@ const styles = StyleSheet.create({
 });
 
 const HomeScreen: FC<HomeScreenProps> = () => {
-  const { text } = useTimeOfDayBackgroundAndText();
+  const { text, background } = useTimeOfDayBackgroundAndText();
 
   return (
     <Layout style={styles.layout} level="2" testID="homeScreen">
-      <StatusBar barStyle="light-content" />
-      <HomeBackground>
+      <StatusBar
+        barStyle="light-content"
+        translucent
+        backgroundColor="transparent"
+      />
+      <HomeBackground background={background}>
         <UserWelcome textStyle={styles.text} timeOfDay={text} />
       </HomeBackground>
       <SafeAreaView style={styles.layout}>
