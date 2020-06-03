@@ -13,6 +13,11 @@ export enum AppScreens {
   Home = 'Home',
 }
 
+export enum HomeFooterScreens {
+  Home = 'Home',
+  Settings = 'Settings',
+}
+
 export enum FeatureScreens {
   MindClear = 'MindClear',
   AnimalPhotos = 'AnimalPhotos',
