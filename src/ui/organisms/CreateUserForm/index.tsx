@@ -96,7 +96,7 @@ const CreateUserForm: FC<CreateUserFormProps> = ({ onCreate }) => {
     );
 
     if (onCreate) {
-      onCreate(user);
+      await onCreate(user);
     }
   }, [name, storage, dispatch, onCreate]);
 

@@ -30,7 +30,7 @@ export const createUser = (
     hasBeenWelcomed: false,
   };
 
-  asyncStore.set('currentUser', user);
+  await asyncStore.set('currentUser', user);
 
   dispatch({
     type: 'SetCurrentUser',
