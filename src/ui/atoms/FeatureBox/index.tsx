@@ -38,7 +38,7 @@ const FeatureBox: FC<FeatureBoxProps> = ({ feature, onPress, style }) => {
     <Card style={[styles.card, style]}>
       <TouchableOpacity onPress={onPress} style={styles.btn}>
         {description.icon({ size: 50 })}
-        <Text category="label" style={styles.text}>
+        <Text category="p1" style={styles.text}>
           {description.title}
         </Text>
       </TouchableOpacity>

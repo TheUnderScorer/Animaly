@@ -1,10 +1,19 @@
-import React, { FC } from 'react';
+import React, { FC, ReactElement, useCallback } from 'react';
 import UserWelcome from '../ui/molecules/UserWelcome';
 import useTimeOfDayBackgroundAndText from '../hooks/common/useTimeOfDayBackgroundAndText';
-import { SafeAreaView, StatusBar, StyleSheet, View } from 'react-native';
+import { Route, SafeAreaView, StatusBar, StyleSheet, View } from 'react-native';
 import FeaturesGrid from '../ui/molecules/FeaturesGrid';
-import { Layout } from '@ui-kitten/components';
+import {
+  BottomNavigation,
+  BottomNavigationTab,
+  Layout,
+} from '@ui-kitten/components';
 import HomeBackground from '../ui/atoms/HomeBackground';
+import {
+  BottomTabBarProps,
+  BottomTabNavigationProp,
+  createBottomTabNavigator,
+} from '@react-navigation/bottom-tabs';
 
 export interface HomeScreenProps {}
 
