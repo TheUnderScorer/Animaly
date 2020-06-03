@@ -4,7 +4,6 @@ import { makeStore } from '../store';
 import AsyncStorageProvider from '../providers/AsyncStorageProvider';
 import ThemeProvider from '../providers/ThemeProvider';
 import { NavigationContainer } from '@react-navigation/native';
-import { RootScreens } from '../screens';
 import HomeScreen from './HomeScreen';
 import { createMockProxy } from 'jest-mock-proxy/lib';
 import AsyncStore from '../storage/AsyncStore';
