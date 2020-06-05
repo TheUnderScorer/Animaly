@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     paddingRight: 5,
     bottom: '4%',
   },
-  inner: {
+  innerExpanded: {
     paddingLeft: 20,
     paddingRight: 20,
     width: '100%',
@@ -130,7 +130,7 @@ const CreateUserForm: FC<CreateUserFormProps> = ({ onCreate }) => {
         <Text style={styles.label} category="h5">
           How should I call you?
         </Text>
-        <View style={[styles.inner]}>
+        <View style={[styles.innerExpanded]}>
           <Input
             testID="createUserInput"
             disabled={loading}

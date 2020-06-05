@@ -1,11 +1,14 @@
 import React, { FC } from 'react';
-import { RootScreens } from './screens';
+import { FeatureScreens, RootScreens } from './screens';
 import { createStackNavigator } from '@react-navigation/stack';
 import { stackHeaderProps } from './static/headerProps';
 import SplashScreen from './screens/SplashScreen';
 import { useSelector } from 'react-redux';
 import { AppStore } from './store';
 import HomeNavigator from './HomeNavigator';
+import { SafeAreaView } from 'react-native';
+import { Text } from '@ui-kitten/components';
+import MindClearScreen from './screens/features/MindClearScreen';
 
 const Stack = createStackNavigator();
 
@@ -22,13 +25,23 @@ const RootStack: FC<RootStackProps> = () => {
         }}
         initialRouteName={RootScreens.Splash}>
         {currentUser && (
-          <Stack.Screen
-            options={{
-              headerShown: false,
-            }}
-            component={HomeNavigator}
-            name={RootScreens.Home}
-          />
+          <>
+            <Stack.Screen
+              options={{
+                headerShown: false,
+              }}
+              component={HomeNavigator}
+              name={RootScreens.Home}
+            />
+            <Stack.Screen
+              options={{
+                title: 'Mind Clear',
+                headerTransparent: true,
+              }}
+              name={FeatureScreens.MindClear}
+              component={MindClearScreen}
+            />
+          </>
         )}
         {!currentUser && (
           <Stack.Screen

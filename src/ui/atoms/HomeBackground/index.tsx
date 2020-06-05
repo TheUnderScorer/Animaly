@@ -11,8 +11,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingBottom: 40,
-    maxHeight: 400,
     overflow: 'hidden',
+    flex: 1,
   },
 });
 

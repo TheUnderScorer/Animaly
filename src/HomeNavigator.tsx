@@ -17,6 +17,22 @@ const HomeNavigator: FC<HomeStackProps> = () => {
       tabBar={(props) => <FooterNavigator {...props} />}
       initialRouteName={HomeFooterScreens.Home}>
       <TabNavigator.Screen
+        name={HomeFooterScreens.Routine}
+        options={{
+          tabBarLabel: 'Routine',
+          tabBarIcon: (props) => (
+            <Icon style={normalIcon} {...props} name="repeat-outline" />
+          ),
+        }}>
+        {() => (
+          <SafeAreaView>
+            <Layout level="2">
+              <Text>Routine</Text>
+            </Layout>
+          </SafeAreaView>
+        )}
+      </TabNavigator.Screen>
+      <TabNavigator.Screen
         options={{
           tabBarLabel: 'Home',
           tabBarIcon: (props) => (

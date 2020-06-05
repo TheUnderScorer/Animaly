@@ -5,6 +5,12 @@ import RootStack from './RootStack';
 import { Provider } from 'react-redux';
 import { makeStore } from './store';
 import AsyncStorageProvider from './providers/AsyncStorageProvider';
+import { NativeModules } from 'react-native';
+
+const { UIManager } = NativeModules;
+
+UIManager.setLayoutAnimationEnabledExperimental &&
+  UIManager.setLayoutAnimationEnabledExperimental(true);
 
 const store = makeStore();
 

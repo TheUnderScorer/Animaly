@@ -16,6 +16,7 @@ export enum AppScreens {
 export enum HomeFooterScreens {
   Home = 'Home',
   Settings = 'Settings',
+  Routine = 'Routine',
 }
 
 export enum FeatureScreens {

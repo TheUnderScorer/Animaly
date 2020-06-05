@@ -1,4 +1,4 @@
-import React, { FC, useMemo } from 'react';
+import React, { FC, useCallback, useMemo } from 'react';
 import { FeatureScreens } from '../../../screens';
 import { featureDescriptions } from '../../../features';
 import { Card, Text } from '@ui-kitten/components';
@@ -11,14 +11,14 @@ import {
 
 export interface FeatureBoxProps {
   feature: FeatureScreens;
-  onPress?: () => any;
+  onPress?: (screen: FeatureScreens) => any;
   style?: StyleProp<ViewStyle>;
 }
 
 const styles = StyleSheet.create({
   card: {
-    minWidth: 150,
-    height: 150,
+    minWidth: 125,
+    height: 125,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -34,9 +34,15 @@ const styles = StyleSheet.create({
 const FeatureBox: FC<FeatureBoxProps> = ({ feature, onPress, style }) => {
   const description = useMemo(() => featureDescriptions[feature], [feature]);
 
+  const handlePress = useCallback(() => {
+    if (onPress) {
+      onPress(feature);
+    }
+  }, [onPress, feature]);
+
   return (
     <Card style={[styles.card, style]}>
-      <TouchableOpacity onPress={onPress} style={styles.btn}>
+      <TouchableOpacity onPress={handlePress} style={styles.btn}>
         {description.icon({ size: 50 })}
         <Text category="p1" style={styles.text}>
           {description.title}
